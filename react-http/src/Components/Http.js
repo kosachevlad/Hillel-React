@@ -66,8 +66,8 @@ class Http extends React.Component {
     const { posts, selectedPostId, editingPost, editedPostTitle } = this.state;
 
     return (
-      <div>
-        <h1>Posts</h1>
+      <div className="container">
+        <h1 className="posts">Posts</h1>
         <ul>
           {posts.map((post, index) => (
             <li

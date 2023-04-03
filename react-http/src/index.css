@@ -11,7 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+button {
+  border: none;
+  margin: 3px;
+  padding: 10px;
+  width: 80px;
+  border-radius: 10px;
+  background-color: #7062f2;
+  color: #fff;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #5949ef;
+  color: black;
+  transition: 0.5s ease;
+}
 
 .selected {
   color: blue;
 }
+.container {
+  max-width: 1200px;
+  padding: 10px;
+}
+.posts {
+  text-align: center;
+}
+
+
