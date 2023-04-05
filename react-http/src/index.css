@@ -37,5 +37,16 @@ button:hover {
 .posts {
   text-align: center;
 }
+.buttonAdd {
+  width: 50px;
+  padding: 5px;
+  border-radius: 2px;
+}
+.addFormInput {
+  height: 20px;
+}
+.errorMessage {
+  color: red;
+}
 
 

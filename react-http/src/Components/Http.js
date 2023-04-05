@@ -1,4 +1,5 @@
 import React from "react";
+import Form from "./Form";
 
 class Http extends React.Component {
   constructor(props) {
@@ -62,9 +63,15 @@ class Http extends React.Component {
     }
   };
 
+  handleAddPost = (newPost) => {
+    const updatedPosts = [...this.state.posts, newPost];
+    this.setState({
+      posts: updatedPosts,
+    })
+  }
+
   render() {
     const { posts, selectedPostId, editingPost, editedPostTitle } = this.state;
-
     return (
       <div className="container">
         <h1 className="posts">Posts</h1>
@@ -89,12 +96,15 @@ class Http extends React.Component {
             </li>
           ))}
         </ul>
-        <button onClick={this.handleDelete} disabled={selectedPostId === null}>
+        <button onClick={this.handleDelete}>
           Delete
         </button>
         <button onClick={this.handleEdit}>
           {editingPost === null ? "Edit" : "Save"}
-        </button>
+        </button> 
+        <Form 
+          posts={this.state.posts} onAddPost={this.handleAddPost}
+        />      
       </div>
     );
   }
