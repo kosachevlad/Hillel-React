@@ -3,8 +3,9 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Home from "./Home";
-import Popular from "./Popular";
-import Battle from "./Battle";
+import Popular from "../Popular/index";
+import Battle from "../Battle/index";
+import Results from "../Battle/Results";
 import Nav from "./Nav";
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/battle",
         element: <Battle />,
+      },
+      {
+        path: "/battle/results",
+        element: <Results />,
       },
       {
         path: "*",

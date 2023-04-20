@@ -31,6 +31,7 @@ li {
   display: block;
   padding: 7px 0;
   margin: 10px auto;
+  cursor: pointer;
 }
 
 .button:hover:enabled {
@@ -66,7 +67,6 @@ li {
 .popular-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
 }
 
 .popular-item {
@@ -99,7 +99,9 @@ li {
 
 .row {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 50px auto;
 }
 
 .column {
@@ -144,17 +146,21 @@ li {
   cursor: pointer;
 }
 
+.preloader-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
 .preloader {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100%;
-  height: 100%;
+  transform: translate(-50%, 0);
 }
 
 .preloader__loader {
   position: absolute;
-  transform: translate(-50%, -50%);
 }
 
 @keyframes ldio-r8owy0206n {
@@ -191,4 +197,10 @@ li {
 }
 .ldio-r8owy0206n div { box-sizing: content-box; }
 
+.battle-results {
+  color: #d0021b;
+}
 
+.winner,.loser {
+  text-align: center;
+}

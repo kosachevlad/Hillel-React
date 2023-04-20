@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchPopularRepos } from "./api";
+import { fetchPopularRepos } from "../api";
 import SelectedLanguage from "./SelectedLanguage";
 import Repos from "./Repos";
 import Preloader from "./Preloader";
