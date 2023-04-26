@@ -1,27 +1,25 @@
 import {useState} from "react";
+import { useDispatch } from "react-redux";
+import { fetchBattleData } from "../redux/battle/battle.thunk";
 
-const PlayerInput = ({id, onSubmit, label}) => {
+const PlayerInput = ({id, label}) => {
     const [username, setUsername] = useState('');
     const [error, setError] = useState(null);
 
-    const handleSubmit = async (event) => {
+    const dispatch = useDispatch();
+
+    const handleSubmit = (event) => {
         event.preventDefault();
-
-        try {
-            const response = await fetch(`https://api.github.com/users/${username}`);
-            if (response.status === 404) {
-                setError('User not found');
-                return;
-            }
-        } catch (error) {
-            console.error(error);
-            setError('An error occurred');
-            return;
+        if (username) {
+          const data = {
+            [`${id}Name`]: username,
+            [`${id}Image`]: `https://github.com/${username}.png?size200`,
+            username,
+          };
+          dispatch(fetchBattleData(data));
         }
-
-        onSubmit(id, username);
-    }
-
+      };
+    
     return (
         <form className='column' onSubmit={handleSubmit}>
             <label className='header' htmlFor="username">{label}</label>

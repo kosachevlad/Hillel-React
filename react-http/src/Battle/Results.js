@@ -1,39 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { battle } from "../api";
+import { useDispatch, useSelector } from "react-redux";
 import Preloader from "../Popular/Preloader";
 import PlayerPreview from "./PlayerPreview";
+import { fetchBattleData } from "../redux/battle/battle.thunk";
 
 const Results = () => {
   const location = useLocation();
-  const [firstPlayer, setFirstPlayer] = useState({});
-  const [secondPlayer, setSecondPlayer] = useState({});
-  const [firstPlayerScore, setFirstPlayerScore] = useState(null);
-  const [secondPlayerScore, setSecondPlayerScore] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
-
+  const dispatch = useDispatch();
+  const {
+    firstPlayer,
+    secondPlayer,
+    firstPlayerScore,
+    secondPlayerScore,
+    error,
+    loading
+  } = useSelector((state) => state.results);
+  
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    setLoading(true);
-    battle([params.get('playerOneName'), params.get('playerTwoName')])
-      .then((data) => {
-        setFirstPlayer(data[0].profile);
-        setSecondPlayer(data[1].profile);
-        setFirstPlayerScore(data[0].score);
-        setSecondPlayerScore(data[1].score);
-      })
-      .catch((error) => setError(error))
-      .finally(() => setLoading(false));
+    dispatch(fetchBattleData(params));
   }, [location.search]);
 
   if (error) {
-    return "Error";
+    return <div>Error</div>;
   }
 
   const handleRestart = () => {
-    window.location.href = '/battle';
+    window.location.href = "/battle";
   };
+
   return (
     <>
       {loading && (

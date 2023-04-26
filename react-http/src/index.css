@@ -72,6 +72,7 @@ li {
 .popular-item {
   margin: 20px;
   text-align: center;
+  flex: 0 0 180px;
 }
 
 .popular-rank {
@@ -101,7 +102,7 @@ li {
   display: flex;
   justify-content: space-between;
   max-width: 1000px;
-  margin: 50px auto;
+  margin: 20px auto;
 }
 
 .column {

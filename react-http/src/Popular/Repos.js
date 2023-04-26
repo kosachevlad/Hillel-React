@@ -1,4 +1,19 @@
-const Repos = ({repos}) => {
+import { useSelector } from "react-redux"
+import Preloader from "./Preloader";
+
+const Repos = () => {
+    const loading = useSelector(state => state.popularReducer.loading);
+    const repos = useSelector(state => state.popularReducer.repos);
+    const error = useSelector(state => state.popularReducer.error);
+
+    if (loading) {
+        return <Preloader />
+    }
+
+    if (error) {
+        return <p>{error}</p>
+    }
+
     return (
         <ul className="popular-list">
         {repos.map((repo, index) => {
