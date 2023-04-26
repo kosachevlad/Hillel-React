@@ -9,10 +9,9 @@ import {
 } from "./battle.action";
 
 export const fetchBattleData = (params) => {
-    console.log(params);
   return (dispatch) => {
     dispatch(setLoading(true));
-    battle([params.playerOneName, params.playerTwoName])
+    battle([params.get('playerOneName'), params.get('playerTwoName')])
       .then((data) => {
         dispatch(setFirstPlayer(data[0].profile));
         dispatch(setSecondPlayer(data[1].profile));

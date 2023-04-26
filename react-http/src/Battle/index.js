@@ -7,9 +7,10 @@ import { setPlayerName, setPlayerImage, resetPlayer } from '../redux/battle/batt
 
 const Battle = () => {
   const dispatch = useDispatch();
-  const playersData = useSelector((state) => state);
+  const playersData = useSelector((state) => state.resultsReducer);
 
-  const handleSubmit = (id, username) => {
+  const handleSubmit = (e, id, username) => {
+    e.preventDefault();
     dispatch(setPlayerName(id, username));
     dispatch(
       setPlayerImage(

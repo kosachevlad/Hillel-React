@@ -15,7 +15,7 @@ const Results = () => {
     secondPlayerScore,
     error,
     loading
-  } = useSelector((state) => state.results);
+  } = useSelector((state) => state.resultsReducer);
   
   useEffect(() => {
     const params = new URLSearchParams(location.search);

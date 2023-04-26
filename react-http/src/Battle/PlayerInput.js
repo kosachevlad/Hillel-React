@@ -1,27 +1,11 @@
 import {useState} from "react";
-import { useDispatch } from "react-redux";
-import { fetchBattleData } from "../redux/battle/battle.thunk";
 
-const PlayerInput = ({id, label}) => {
+const PlayerInput = ({id, label, onSubmit}) => {
     const [username, setUsername] = useState('');
     const [error, setError] = useState(null);
-
-    const dispatch = useDispatch();
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if (username) {
-          const data = {
-            [`${id}Name`]: username,
-            [`${id}Image`]: `https://github.com/${username}.png?size200`,
-            username,
-          };
-          dispatch(fetchBattleData(data));
-        }
-      };
     
     return (
-        <form className='column' onSubmit={handleSubmit}>
+        <form className='column' onSubmit={(e) => onSubmit(e, id, username)}>
             <label className='header' htmlFor="username">{label}</label>
             <input 
                 type="text" 
